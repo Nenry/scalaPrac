@@ -137,9 +137,379 @@ import scala.io.Source
 
 
 //FUNCTIONS
+//  def funcName (param1:dataType, param2:dataType) : returnType = {
+//   function body
+//   return valueToReturn
+//  }
+  
 
-object ScalaTutorial {
+// object ScalaTutorial {
+//   def main(args: Array[String]) {
+    
+//     def getSum(num1: Int = 1, num2 : Int = 1) : Int = {
+//       return num1 + num2 // keyword return is not necessary, last line is returned
+//     }
+
+//     println("5 + 4 = " + getSum(5, 4))
+//     println("5 + 4 = " + getSum(num2 = 5, num1 = 4))
+
+//     def sayHi() : Unit = {
+//       println("Hi, how are you?")
+//     }
+//     sayHi
+
+//     def getAllSum(args : Int*) : Int = {
+//       var sum: Int = 0
+//       // you can also do var sum = 0
+//       for (num <- args) {
+//         sum += num
+//       }
+//       sum
+//     }
+
+//     println("Get Sum " + getAllSum(1, 2, 3, 4, 5, 6))
+
+//     //RECURSION
+//     def factorial(num: BigInt) : BigInt = {
+//       if(num <= 1)
+//         1
+//       else 
+//       num * factorial(num - 1)
+//     }
+
+//     println("Factorial of 4 = " + factorial(4))
+
+//   }
+// }
+
+
+//ARRAYS 
+
+// object ScalaTutorial {
+//   def main(args: Array[String]) {
+//     val favNums = new Array[Int](20)
+
+//     val friends = Array("Bob", "Tom")
+//     friends(0) = "Sue"
+
+//     // println("Best friends" + friends(0))
+
+//     val friends2 = ArrayBuffer[String]()
+//     // println(friends2.length)
+//     // .insert(idx, value)
+//     friends2.insert(0, "Phil")
+//     friends2 += "Mark"
+//     friends2 ++= Array("Susy", "Paul")
+//     // friends2.foreach(println)
+
+//     friends2.insert(1, "Mike", "Sally", "Sam", "Mary", "Sue")
+//     // friends2.foreach(println)
+//     // remove(idx1, idx2)
+//     friends2.remove(1, 2)
+//     // friends2.foreach(println)
+
+//     var friend : String = " "
+
+//     for(friend <- friends2)
+//     println(friend)
+
+//     for(j <- 0 to (favNums.length - 1)){
+//       favNums(j) = j
+//       println(favNums(j))
+//     }
+    
+//     // mapping
+//     val favNumsTimes2 = for (num <- favNums) yield 2 * num 
+//     favNumsTimes2.foreach(println)
+
+//     //filter
+//     var favNumsDiv4 = for(num <- favNums if num % 4 == 0) yield num 
+
+//     favNumsDiv4.foreach(println)
+
+//     var multTable = Array.ofDim[Int](10, 10)
+
+//     for(i <- 0 to 9) {
+//       for(j <- 0 to 9) {
+//         multTable(i)(j) = i * j
+//       }
+//     }
+
+//      for(i <- 0 to 9) {
+//       for(j <- 0 to 9) {
+//         printf("%d * %d = %d\n", i, j, multTable(i)(j))
+//       }
+//     }
+
+
+//     println("Sum : " + favNums.sum)
+//     println("Min : " + favNums.min)
+//     println("Max : " + favNums.max)
+
+//     val sortedNums = favNums.sortWith(_>_) //asecnding 
+//     val sortedNumsD = favNums.sortWith(_<_) //descending
+
+//     println(sortedNums.deep.mkString(", "))
+//   }//main end
+// }
+
+
+//Hashes & Maps
+// object ScalaTutorial {
+//   def main(args: Array[String]) {
+//     val employees = Map("Manager" -> "Bob Smith",
+//       "Secretary" -> "Sue Brown")
+
+//     if(employees.contains("Manager"))
+//       printf("Manager : %s\n", employees("Manager"))
+
+//     val customers = collection.mutable.Map(100 -> "Paul Smith",
+//       101 -> "Sally Smith")
+
+//     printf("Cust 1 : %s\n", customers(100))
+
+//     customers(100) = "Tom Marks"
+//     customers(102) = "Megan Swift"
+
+//     for ((k, v) <- customers) {
+//       printf("%d : %s\n", k ,v)
+//     }
+
+//   } //main end
+// }
+
+//TUPLES
+// object ScalaTutorial {
+//   def main(args: Array[String]) {
+//     var tupleMarge = (103, "Marge Simpson", 10.25)
+
+//     printf("%s owes us $%.2f\n", tupleMarge._2, tupleMarge._3)
+
+//     tupleMarge.productIterator.foreach{i => println(i)}
+    
+//     println(tupleMarge.toString())
+//   }//main end
+// }
+
+
+//CLASSES & INHERITANCE
+
+// object ScalaTutorial {
+//   def main(args: Array[String]) {
+//     val rover = new Animal 
+//     rover.setName("Rover")
+//     rover.setSound("Woof")
+
+//     printf("%s says %s\n", rover.getName, rover.getSound)
+
+
+//     val whiskers = new Animal("Whiskers", "Meow")
+//     println(s"${whiskers.getName} with id ${whiskers.id} says ${whiskers.getSound}")
+
+//     println(whiskers.toString)
+
+//     val spike = new Dog("Spike")
+//     // spike.setName("Henry")
+//     println(spike.getName)
+//     println(spike.toString)
+//   }//MAIN END
+
+//   class Animal(var name: String, var sound: String) {
+//     this.setName(name)
+
+//     val id = Animal.newIdNum
+
+//     def getName() : String = name 
+//     def getSound() : String = sound 
+
+//     def setName(name : String) {
+//       if(!(name.matches(".*\\d")))
+//         this.name = name
+//       else 
+//         this.name = "No Name"
+//     }
+
+//     def setSound(sound: String) {
+//       this.sound = sound 
+//     }
+
+//     //if name was passed in new creation
+//     def this(name: String){
+//       this("No Name", "No Sound")
+//       this.setName(name)
+//     }
+
+//     // if none were passed in new construction
+//     def this() {
+//       this("No Name", "No Sound")
+//     }
+
+//     override def toString() : String = {
+//       return "%s with id %d says %s".format(this.name, this.id, this.sound)
+//     }
+
+
+//     //protected means only can be accessed by inside of class or sub classes
+//     // protected var name = "No Name"
+
+//     //private
+//     // private cannot be accessed by sublcasses
+
+
+//   }
+
+//   object Animal {
+//       private var idNumber = 0
+//       private def newIdNum = { idNumber += 1; idNumber}
+//   }
+
+//   class Dog(name: String, sound: String, growl: String) extends Animal(name, sound){
+
+//     //assumes name and sound are passed in, but no growl
+//     def this(name: String, sound: String){
+//       this("No Name", sound, "No Growl")
+//       this.setName(name) //validates with setName
+      
+//     }
+
+//     //assumes only name was passed in
+//     def this(name: String) {
+//       this("No Name", "No Sound", "No Growl")
+//       this.setName(name)
+//     }
+
+//     def this(){
+//       this("No Name", "No Sound", "No Growl")
+//     }
+
+//     override def toString():String = {
+//       return "%s with id %d says %s or %s".format(this.name, this.id, this.sound, this.growl)
+//     }
+
+//   }
+
+
+
+// } //end of ScalaTutorial
+
+//ABSTRACT CLASS 
+//   object ScalaTutorial {
+//   def main(args: Array[String]) {
+//     val fang = new Wolf("Fang")
+//     fang.moveSpeed = 36.0
+//     println(fang.move)
+//   } //end of main
+
+//   abstract class Mammal(val name: String) {
+//     var moveSpeed : Double
+
+//     def move: String
+//   }
+
+//   class Wolf(name: String) extends Mammal(name) {
+//     var moveSpeed = 35.0
+
+//     def move = "The wolf %s runs %.2f mph".format(this.name, this.moveSpeed)
+//   }
+// }
+
+
+//TRAITS
+// object ScalaTutorial {  
+//   def main(args: Array[String]) {
+//     val superman = new Superhero("Superman")
+//     println(superman.fly)
+//     println(superman.hitByBullet)
+//     println(superman.ricochet(2500))
+
+//   }//END MAIN
+
+//   trait Flyable {
+//     def fly: String 
+//   }
+
+//   trait BulletProof {
+//     def hitByBullet: String
+
+//     def ricochet(startSpeed : Double) : String = {
+//       "The bullet richoets at a speed of %.1ft ft/sec".format(startSpeed * .75)
+//     }
+//   }
+
+//   class Superhero(val name: String) extends Flyable with BulletProof{
+//     def fly = "%s flys through the air".format(this.name)
+
+//     def hitByBullet = "The bullet bounces off of %s".format(this.name)
+//   }
+// }
+
+
+//HIGH ORDER FUNCTIONS
+
+// object ScalaTutorial {  
+//   def main(args: Array[String]) {
+//     val log10Func = log10 _ // _ means you meant to keep the function and not a random variable aka callbacks
+//     println(log10Func(1000))
+//     List(1000.0, 1000.0).map(log10Func).foreach(println)
+
+//     List(1, 2, 3, 4, 5).map((x : Int) => x * 50).foreach(println)
+
+//     List(1, 2, 3, 4, 5).filter(_ % 2 == 0).foreach(println)
+
+//     def times3(num : Int) = num * 3
+//     def times4(num: Int) = num * 4
+
+//     // receive a function then returns a Double type then receive another integer
+//     def multIt(func: (Int) => Double, num : Int) = {
+//       func(num)
+//     }
+
+//     printf("4 * 100 = %.1f\n", multIt(times4, 100))
+//     //CLOSURES
+//     val divisorVal = 5
+//     val divisor5 = (num : Double) => num /divisorVal
+//     println("5 / 5 = " + divisor5(5.0))
+
+
+//   }
+// }
+
+//import java.io.PrintWirter, we already imported above
+//import scala.io.Source, already improted above
+
+//WRITE READ FILES
+// object ScalaTutorial {  
+//   def main(args: Array[String]) {
+
+//     val writer = new PrintWriter("test.txt")
+//     writer.write("Just some random text\nSome more random text")
+//     writer.close()
+
+//     val textFromFile = Source.fromFile("test.txt", "UTF-8")
+
+//     val lineIterator = textFromFile.getLines
+
+//     for(line <- lineIterator)
+//       println(line)
+
+//     textFromFile.close()
+//   }
+// }
+
+//HANDLE ERROR EXCEPTION HANDLING
+object ScalaTutorial {  
   def main(args: Array[String]) {
+    
+    def divideNums(num1: Int, num2: Int) = try 
+    {
+      (num1/num2)
+    } catch {
+      case ex: java.lang.ArithmeticException => "Can't divide by zero"
+    } finally {
 
+    }
+
+    println("3 / 0 = " + divideNums(3, 0))
+    println("3 / 1 = " + divideNums(3, 1))
   }
 }
